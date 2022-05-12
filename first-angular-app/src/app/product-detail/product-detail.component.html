@@ -1,8 +1,8 @@
 <div *ngIf="product">
-    <h2>{{product.name | uppercase}} Details</h2>
+    <h2>{{product.name | uppercase}}</h2>
     <div><span>id: </span>{{product.id}}</div>
     <div><span>Descrition: </span>{{product.description}}</div>
-    <div><img src="{{product.imageUrl}}"/>{{product.imageUrl}}</div>
+    <div><img src="{{product.imageUrl}}"/></div>
     <div><span>Price: </span>{{product.price | currency }}</div>
     <div>
         <label for="product-name">Motorbike name: </label>
