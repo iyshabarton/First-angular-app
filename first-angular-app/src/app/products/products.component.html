@@ -1,0 +1,18 @@
+<h3>Products</h3>
+<ul>
+    <li *ngFor="let product of products"> <!--this is to be able to iterate through le list of products, so it wont cause an error-->
+        <button type="button" [class.selected]="product === selectedProduct" (click)="onSelect(product)">
+            <span class="badge">{{product.id}} </span>
+            <span class="name">{{product.name}}</span>
+        </button>
+    </li>
+</ul>
+<!--<div *ngIf="selectedProduct">
+    <h2>{{selectedProduct.name | uppercase}} Details</h2>
+    <div>id: {{selectedProduct.id}}</div>
+    <div>
+        <label for="product-name">Product name:</label>
+        <input id="product-name" [(ngModel)]="selectedProduct.name" placeholder="name">
+    </div>
+</div>-->
+<app-product-detail [product]="selectedProduct"></app-product-detail>
