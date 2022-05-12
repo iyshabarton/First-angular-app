@@ -1,18 +1,17 @@
-<h3>Products</h3>
-<ul>
+<h3>Motorbikes</h3>
+
+<div>
+    <label for="new-product">MotoBike name: </label>
+    <input id="new-product" #productName />
+    <button type="button" class="add-button" (click)="add(productName.value); productName.value=''">
+        Add MotoBike</button>
+</div>
+
+<ul class="products">
     <li *ngFor="let product of products"> <!--this is to be able to iterate through le list of products, so it wont cause an error-->
-        <button type="button" [class.selected]="product === selectedProduct" (click)="onSelect(product)">
-            <span class="badge">{{product.id}} </span>
-            <span class="name">{{product.name}}</span>
-        </button>
+       <a routerLink="/detail/{{product.id}}">
+            <span class="badge">{{product.id}} </span> {{product.name}}
+        </a>
+        <button type="button" class="delete" title="delete product" (click)="delete(product)">X</button>
     </li>
 </ul>
-<!--<div *ngIf="selectedProduct">
-    <h2>{{selectedProduct.name | uppercase}} Details</h2>
-    <div>id: {{selectedProduct.id}}</div>
-    <div>
-        <label for="product-name">Product name:</label>
-        <input id="product-name" [(ngModel)]="selectedProduct.name" placeholder="name">
-    </div>
-</div>-->
-<app-product-detail [product]="selectedProduct"></app-product-detail>
