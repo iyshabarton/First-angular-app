@@ -45,6 +45,14 @@ export class ProductsComponent implements OnInit {
       this.products = this.products.filter(p => p !== product);
       this.productService.deleteProduct(product.id).subscribe();
     }
+    displayStyle = "none";
+
+    openPopup() {
+      this.displayStyle = "block";
+    }
+    closePopup() {
+      this.displayStyle = "none";
+    }
 
 
 }

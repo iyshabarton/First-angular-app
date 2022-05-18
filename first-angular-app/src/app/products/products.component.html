@@ -12,9 +12,29 @@
        <a routerLink="/detail/{{product.id}}">
            <div><img class="product-image" src="{{product.imageUrl}}"/></div>
             <span class="badge">{{product.id}} </span> {{product.name | uppercase}}
+        </a><!--when the delete was in this <a> when click on delete it would send back to the detail page-->
             <button type="button" class="delete" title="delete product" (click)="delete(product)">Delete</button>
-        </a>
     </li>
 </ul>
-
 </div>
+<div>
+    <!--<button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary"
+    (click)="openPopup()">Show me something</button>
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display' : displayStyle}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Does this thing work</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Normaly this should show up in the modal</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger"
+                    (click)="closePopup()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>-->
