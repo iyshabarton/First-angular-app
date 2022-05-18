@@ -1,0 +1,6 @@
+<h1>Top Products</h1>
+<div class="product-menu">
+    <a *ngFor="let product of products" routerLink="/detail/{{product.id}}">{{product.name}}
+    <img class="image" src="{{product.imageUrl}}"/>
+</a>
+</div>
