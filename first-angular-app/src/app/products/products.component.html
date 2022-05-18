@@ -12,8 +12,9 @@
        <a routerLink="/detail/{{product.id}}">
            <div><img class="product-image" src="{{product.imageUrl}}"/></div>
             <span class="badge">{{product.id}} </span> {{product.name | uppercase}}
-        </a><!--when the delete was in this <a> when click on delete it would send back to the detail page-->
-            <button type="button" class="delete" title="delete product" (click)="delete(product)">Delete</button>
+        </a>
+        <button type="button" class="delete" title="delete product" (click)="delete(product)">Delete</button>
+        <button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button>
     </li>
 </ul>
 </div>
@@ -37,4 +38,4 @@
         </div>
     </div>
 
-</div>-->
+</div>

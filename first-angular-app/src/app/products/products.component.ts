@@ -3,6 +3,7 @@ import { Product } from './product';
 import { PRODUCTS } from './mock-product';
 import { ProductService } from '../product.service';
 import { MessageService } from '../message.service';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-products',
@@ -45,14 +46,10 @@ export class ProductsComponent implements OnInit {
       this.products = this.products.filter(p => p !== product);
       this.productService.deleteProduct(product.id).subscribe();
     }
-    displayStyle = "none";
-
-    openPopup() {
-      this.displayStyle = "block";
-    }
-    closePopup() {
-      this.displayStyle = "none";
-    }
+   // open() {
+      //const modalRef = this.modalService.open(ModalComponent);
+     // modalRef.componentInstance.name = 'World';}
+     // An Error comes up because it does not recongnize the modalService and or the componentInstance, try and find out what they mean before.
 
 
 }
