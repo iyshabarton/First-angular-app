@@ -1,41 +1,18 @@
 <h3>Motorbikes</h3>
 
 <div>
-    <label for="new-product">MotorBike name: </label>
-    <input id="new-product" #productName />
-    <button type="button" class="add-button" (click)="add(productName.value); productName.value=''">
-        Add MotorBike</button>
+    <button type="button" class="btn btn-primary" (click)="newProduct()">New motorbike</button>
 </div>
 <div class="container">
 <ul class="products">
     <li *ngFor="let product of products"> <!--this is to be able to iterate through le list of products, so it wont cause an error-->
        <a routerLink="/detail/{{product.id}}">
-           <div><img class="product-image" src="{{product.imageUrl}}"/></div>
+           <div>
+               <img class="product-image" src="{{product.imageUrl}}"/>
+            </div>
             <span class="badge">{{product.id}} </span> {{product.name | uppercase}}
         </a>
         <button type="button" class="delete" title="delete product" (click)="delete(product)">Delete</button>
-        <button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button>
     </li>
 </ul>
-</div>
-<div>
-    <!--<button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary"
-    (click)="openPopup()">Show me something</button>
-    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display' : displayStyle}">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Does this thing work</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Normaly this should show up in the modal</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger"
-                    (click)="closePopup()">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
