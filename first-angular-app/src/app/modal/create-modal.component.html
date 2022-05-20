@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h4 class="modal-title">Create a new Motorbike</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+      <form [formGroup]="profileForm">
+    <label for="new-product">MotorBike name: </label>
+    <input id="new-product" #productName />
+    <label for="new-product">MotorBike description: </label>
+    <input id="new-product" #productDescription />
+    <label for="new-product">MotorBike photo url: </label>
+    <input id="new-product" #productimageUrl />
+    <label for="new-product">MotorBike price: </label>
+    <input id="new-product" #productPrice />
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="save(productName.value, productDescription.value, productimageUrl.value, productPrice.value)">Save</button>
+  </div>
