@@ -3,17 +3,22 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
-      <form [formGroup]="profileForm">
-    <label for="new-product">MotorBike name: </label>
-    <input id="new-product" #productName />
-    <label for="new-product">MotorBike description: </label>
-    <input id="new-product" #productDescription />
-    <label for="new-product">MotorBike photo url: </label>
-    <input id="new-product" #productimageUrl />
-    <label for="new-product">MotorBike price: </label>
-    <input id="new-product" #productPrice />
+    <form [formGroup]="profileForm">
+      <label for="name">MotorBike name: </label>
+      <input id="name" formControlName="name"/>
+      <label for="description">MotorBike description: </label>
+      <input id="description" formControlName="description" />
+      <label for="imageUrl">MotorBike photo url: </label>
+      <input id="imageUrl" formControlName="imageUrl" />
+      <label for="price">MotorBike price: </label>
+      <input id="price" type="number" formControlName="price" />
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="save(productName.value, productDescription.value, productimageUrl.value, productPrice.value)">Save</button>
+    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
   </div>
+<!--the form has been implemented in the modal body, the [formGroup] = ProfileForm that has been created in the component.ts 
+the form in the component is asking for new data to put entered into the specific cases.
+All formGroup forms have a formControlName methode that call the object keys that have been created in the component
+So when the user enters data the data is correctly placed in the according sections
+-->

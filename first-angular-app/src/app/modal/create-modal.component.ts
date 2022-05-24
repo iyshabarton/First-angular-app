@@ -8,6 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./create-modal.component.css'],
 })
 export class CreateModalComponent implements OnInit {
+  //Created a Form called profileForm
   profileForm = new FormGroup({
     name: new FormControl(''),
     description: new FormControl(''),
@@ -17,21 +18,9 @@ export class CreateModalComponent implements OnInit {
   constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {}
-  save(
-    name: string,
-    description: string,
-    imageUrl: string,
-    price: string
-  ): void {
-    this.activeModal.close(name);
-    console.warn(this.profileForm.value);
-  }
-  private hello(
-    name: string,
-    description: string,
-    imageUrl: string,
-    price: string
-  ): string {
-    return `hello ${name}, ${description}, ${imageUrl}, ${price}`;
+  save(): void {
+    this.activeModal.close(this.profileForm.value);
   }
 }
+// putting the data into a form, this form is expecting to recieve data from the user
+//the fucntion save will save all the new data into their correct form holders
