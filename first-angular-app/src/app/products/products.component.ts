@@ -25,11 +25,6 @@ export class ProductsComponent implements OnInit {
     this.getProducts();
   }
 
-  //onSelect(product: Product): void {
-  // this.selectedProduct = product;
-  // this.messageService.add(`ProductComponent: Selected product id=${product.id}`)
-  //}
-
   getProducts(): void {
     this.productService
       .getProducts()
@@ -57,7 +52,9 @@ export class ProductsComponent implements OnInit {
   // ? 'pas de description'
   // : request.description; this is saying if the length of the text input in the description box is equal to 0 meaning that there is no input
   // then in the description info part will be displayed 'pas de description', other wise it will display what the user has written in.
-
+  update(product: Product): void {
+    this.productService.updateProduct(product.id).subscribe();
+  }
   delete(product: Product): void {
     this.products = this.products.filter((p) => p !== product);
     this.productService.deleteProduct(product.id).subscribe();

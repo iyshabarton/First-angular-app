@@ -34,12 +34,12 @@ export class ProductService {
       catchError(this.handleError<Product[]>('getProductd', []))
     );
   }
-  // updateProduct(product: Product): Observable<any> {
-  //   return this.http.put(this.productsUrl, product, this.httpOptions).pipe(
-  //     tap((_) => this.log(`updated product id=${product.id}`)),
-  //     catchError(this.handleError<any>('updateHero'))
-  //   );
-  // }
+  updateProduct(id: number): Observable<any> {
+    return this.http.put(this.productsUrl, this.httpOptions).pipe(
+      tap((_) => this.log(`updated product id=${id}`)),
+      catchError(this.handleError<any>('updateHero'))
+    );
+  }
   //POST, add a new product th the server
   addProduct(product: NewProductRequest): Observable<Product> {
     //we are adding info to the NewProductRequest interface in product.ts, the variable name is product
