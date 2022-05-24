@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from './product';
+import { NewProductRequest, Product } from './product';
 import { PRODUCTS } from './mock-product';
 import { ProductService } from '../product.service';
 import { MessageService } from '../message.service';
@@ -25,25 +25,35 @@ export class ProductsComponent implements OnInit {
     this.getProducts();
   }
 
-  //onSelect(product: Product): void {
-  // this.selectedProduct = product;
-  // this.messageService.add(`ProductComponent: Selected product id=${product.id}`)
-  //}
-
   getProducts(): void {
     this.productService
       .getProducts()
       .subscribe((products) => (this.products = products));
   } //this will retrieve data from the service
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) {
+  add(request: NewProductRequest): void {
+    //varibale request has been created to hold the object NewProduct Request
+    request.name = request.name.trim();
+    request.description = request.description?.trim() ?? 'pas de description';
+    request.description =
+      request.description.length === 0
+        ? 'pas de description'
+        : request.description;
+    if (!request.name || request.name.length === 0) {
       return;
     }
-    this.productService.addProduct({ name } as Product).subscribe((product) => {
+    this.productService.addProduct(request).subscribe((product) => {
       this.products.push(product);
     });
+  } //the request(variable name) has been made to request the object NewProductRequest that has been created in the product.ts
+  // which hold the object info types.
+  // they both have trim() that will take out all the unwanted spaces, white spaces before and after the text
+  // request.description.length === 0
+  // ? 'pas de description'
+  // : request.description; this is saying if the length of the text input in the description box is equal to 0 meaning that there is no input
+  // then in the description info part will be displayed 'pas de description', other wise it will display what the user has written in.
+  update(product: Product): void {
+    this.productService.updateProduct(product.id).subscribe();
   }
   delete(product: Product): void {
     this.products = this.products.filter((p) => p !== product);
@@ -52,9 +62,9 @@ export class ProductsComponent implements OnInit {
   newProduct() {
     const modalRef = this.modalService.open(CreateModalComponent);
     modalRef.result.then(
-      (normalizedName: string) => {
+      (newProductRequest: NewProductRequest) => {
         console.log('OK');
-        this.add(normalizedName);
+        this.add(newProductRequest);
       },
       () => {
         console.log('Dismissed');

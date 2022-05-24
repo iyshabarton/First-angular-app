@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from './products/product';
+import { NewProductRequest, Product } from './products/product';
 import { PRODUCTS } from './products/mock-product';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
@@ -34,19 +34,21 @@ export class ProductService {
       catchError(this.handleError<Product[]>('getProductd', []))
     );
   }
-  updateProduct(product: Product): Observable<any> {
-    return this.http.put(this.productsUrl, product, this.httpOptions).pipe(
-      tap((_) => this.log(`updated product id=${product.id}`)),
+  updateProduct(id: number): Observable<any> {
+    return this.http.put(this.productsUrl, this.httpOptions).pipe(
+      tap((_) => this.log(`updated product id=${id}`)),
       catchError(this.handleError<any>('updateHero'))
     );
   }
   //POST, add a new product th the server
-  addProduct(product: Product): Observable<Product> {
+  addProduct(product: NewProductRequest): Observable<Product> {
+    //we are adding info to the NewProductRequest interface in product.ts, the variable name is product
     return this.http
       .post<Product>(this.productsUrl, product, this.httpOptions)
       .pipe(
-        tap((newProduct: Product) =>
-          this.log(`added product w/id=${newProduct.id}`)
+        tap(
+          (newProduct: Product) =>
+            this.log(`added product w/id=${newProduct.id}`) //adding a unique Id to the newProduct that is connected to product and NewProductRequest
         ),
         catchError(this.handleError<Product>('addProduct'))
       );
@@ -61,7 +63,8 @@ export class ProductService {
   }
 
   private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
+    console.log(message);
+    this.messageService.add(`ProductService: ${message}`);
   }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
