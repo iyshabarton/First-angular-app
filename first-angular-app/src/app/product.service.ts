@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { NewProductRequest, Product } from './products/product';
-import { PRODUCTS } from './products/mock-product';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -30,16 +29,20 @@ export class ProductService {
   }
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productsUrl).pipe(
-      tap((_) => this.log('fetched heroes')), //Get products from the server
-      catchError(this.handleError<Product[]>('getProductd', []))
+      tap((_) => this.log('fetched products')), //Get products from the server
+      catchError(this.handleError<Product[]>('getProduct', []))
     );
   }
-  updateProduct(id: number): Observable<any> {
-    return this.http.put(this.productsUrl, this.httpOptions).pipe(
-      tap((_) => this.log(`updated product id=${id}`)),
-      catchError(this.handleError<any>('updateHero'))
-    );
+  /** PUT: update the product on the server */
+  updateProduct(product: Product): Observable<any> {
+    return this.http
+      .put(`${this.productsUrl}/ ${product.id}`, product, this.httpOptions)
+      .pipe(
+        tap((_) => this.log(`updated product id=${product.id}`)),
+        catchError(this.handleError<any>('updateProduct'))
+      );
   }
+
   //POST, add a new product th the server
   addProduct(product: NewProductRequest): Observable<Product> {
     //we are adding info to the NewProductRequest interface in product.ts, the variable name is product

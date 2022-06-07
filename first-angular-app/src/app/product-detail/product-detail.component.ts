@@ -3,8 +3,6 @@ import { Product } from '../products/product';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ProductService } from '../product.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ProductsComponent } from '../products/products.component';
 
 @Component({
   selector: 'app-product-detail',
@@ -33,10 +31,11 @@ export class ProductDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-  // save(): void {
-  //   if (this.product) {
-  //     this.productService.updateProduct(this.product)
-  //     .subscribe(() => this.goBack())
-  //   }
-  // }
+  save(): void {
+    if (this.product) {
+      this.productService
+        .updateProduct(this.product)
+        .subscribe(() => this.goBack());
+    }
+  }
 }

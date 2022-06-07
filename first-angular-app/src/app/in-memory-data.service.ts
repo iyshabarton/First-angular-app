@@ -14,7 +14,7 @@ export class InMemoryDataService implements InMemoryDbService {
         description: `La Svartpilen 401 ne renie pas son caractère sauvage. C’est par définition une moto qui se trouve à l’aise en périphérie du centre urbain, là où le bitume est loin d’être parfaitement lisse. Grâce à sa légèreté et son moteur nerveux, elle est parfaitement à l’aise pour filer dans les petites ruelles. Les couleurs et les graphismes de 2022 rehaussent l'apparence époustouflante de la moto et reflètent le mélange progressif de la pensée moderne et du design classique inspiré par l'héritage suédois de la marque.`,
         imageUrl:
           'https://azwecdnepstoragewebsiteuploads.azureedge.net/PHO_BIKE_90_RE_svartpilen-401-my22-90-right_%23SALL_%23AEPI_%23V1.png',
-        price: 644900,
+        price: 64490,
       },
       {
         id: 2,
