@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { CreateModalComponent } from './modal/create-modal.component';
+import { UpdateModalComponent } from './update-modal/update-modal.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CreateModalComponent } from './modal/create-modal.component';
     MessagesComponent,
     DashboardComponent,
     CreateModalComponent,
+    UpdateModalComponent,
   ],
   imports: [
     BrowserModule,

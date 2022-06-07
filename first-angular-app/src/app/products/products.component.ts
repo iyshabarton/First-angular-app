@@ -5,6 +5,7 @@ import { ProductService } from '../product.service';
 import { MessageService } from '../message.service';
 import { CreateModalComponent } from '../modal/create-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UpdateModalComponent } from '../update-modal/update-modal.component';
 
 @Component({
   selector: 'app-products',
@@ -53,8 +54,10 @@ export class ProductsComponent implements OnInit {
   // : request.description; this is saying if the length of the text input in the description box is equal to 0 meaning that there is no input
   // then in the description info part will be displayed 'pas de description', other wise it will display what the user has written in.
   update(product: Product): void {
-    this.productService.updateProduct(product.id).subscribe();
+    const modalRef = this.modalService.open(UpdateModalComponent);
+    this.productService.updateProduct(product).subscribe();
   }
+
   delete(product: Product): void {
     this.products = this.products.filter((p) => p !== product);
     this.productService.deleteProduct(product.id).subscribe();

@@ -1,10 +1,25 @@
 <div *ngIf="product">
     <h2>{{product.name | uppercase}}</h2>
-    <div><span>id: </span>{{product.id}}</div>
-    <div><span>Descrition: </span>{{product.description}}</div>
+    <div>
+        <span>id: </span>{{product.id}}</div>
+    <div>
+        <span>Descrition: </span>{{product.description}}</div>
     <div><img src="{{product.imageUrl}}"/></div>
     <div><span>Price: </span>{{product.price | currency: 'EUR' }}</div>
     <div>
         <button type="button" (click)="goBack()">Go Back</button>
+    </div>
+    <div class="updateInfo">
+    <label for="name">Product name: </label>
+        <input id='product-name' [(ngModel)]='product.name' placeholder="product name"/>
+     <label for="descritption">Descritption of product: </label>
+        <input id='product-description' [(ngModel)]='product.description' placeholder="product description"/>
+    <label for="imageUrl">Url adress for product: </label>
+        <input id='product-imageUrl' [(ngModel)]='product.imageUrl' placeholder="image Url"/>
+    <label for="price">Product price: </label>
+        <input id='product-price' [(ngModel)]='product.price' placeholder="product price"/>
+        <div>
+        <button type="button" (click)="save()">Save</button>
+    </div>
     </div>
 </div>

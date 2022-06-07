@@ -21,3 +21,11 @@ label {
     color: #ccc;
     cursor: auto;
   }
+  .updateInfo {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    word-wrap: break-word;
+    align-content: stretch;
+
+  }

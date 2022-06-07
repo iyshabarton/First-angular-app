@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h4 class="modal-title">Update a Motorbike</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="updateForm" class="modal-form">
+      <label for="name">MotorBike name: </label>
+      <input id='product-name' formControlName="name"/>
+      <label for="description">MotorBike description: </label>
+      <input id="description" formControlName="description" />
+      <label for="imageUrl">MotorBike photo url: </label>
+      <input id="imageUrl" formControlName="imageUrl" />
+      <label for="price">MotorBike price: </label>
+      <input id="price" type="number" formControlName="price" />
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+  </div>
